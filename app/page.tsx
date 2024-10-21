@@ -14,8 +14,8 @@ export default function HomePage() {
 				<div className='home__filters'>
 					<SearchBar />
 					<div className='home__fillter-container'>
-						<CustomFilter title='fule' />
-						<CustomFilter title='year' />
+						<CustomFilter  />
+						<CustomFilter  />
 					</div>
 				</div>
 			</div>
