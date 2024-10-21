@@ -1,9 +1,24 @@
-import Hero from "@/components/Hero"
+import CustomFilter from '@/components/CustomFilter'
+import Hero from '@/components/Hero'
+import SearchBar from '@/components/SearchBar'
 
 export default function HomePage() {
 	return (
 		<main className='overflow-hidden'>
-			<Hero/>
+			<Hero />
+			<div className='my-12 padding-x padding-y max-width ' id='discover'>
+				<div className='home__text-container'>
+					<h1 className='text-4xl font-extrabold capitalize'>car catalogue</h1>
+					<p className='capitalize'>explore the car you might like</p>
+				</div>
+				<div className='home__filters'>
+					<SearchBar />
+					<div className='home__fillter-container'>
+						<CustomFilter title='fule' />
+						<CustomFilter title='year' />
+					</div>
+				</div>
+			</div>
 		</main>
 	)
 }
