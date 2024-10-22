@@ -1,8 +1,20 @@
+import CarCard from '@/components/CarCard'
 import CustomFilter from '@/components/CustomFilter'
 import Hero from '@/components/Hero'
 import SearchBar from '@/components/SearchBar'
+import { fetchCars } from '@/utils'
 
-export default function HomePage() {
+export default async function HomePage({ searchParams }) {
+	const allCars = await fetchCars({
+		manufacturer: searchParams.manufacturer||'',
+		year: searchParams.year||2022,
+		fuel: searchParams.fuel||'',
+		limit: searchParams.limit||10,
+		model: searchParams.model||'',
+	})
+
+	const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
+
 	return (
 		<main className='overflow-hidden'>
 			<Hero />
@@ -14,10 +26,24 @@ export default function HomePage() {
 				<div className='home__filters'>
 					<SearchBar />
 					<div className='home__fillter-container'>
-						<CustomFilter  />
-						<CustomFilter  />
+						<CustomFilter title='fuel' />
+						<CustomFilter title='year' />
 					</div>
 				</div>
+				{!isDataEmpty ? (
+					<section className=''>
+						<div className='home__cars-wrapper'>
+							{allCars?.map((car, i) => {
+								return <CarCard car={car} key={i} />
+							})}
+						</div>
+					</section>
+				) : (
+					<div className='home__error-container'>
+						<h2 className='text-black text-xl font-bold'>Oops, no results</h2>
+						<p className=''>{allCars?.message}</p>
+					</div>
+				)}
 			</div>
 		</main>
 	)
