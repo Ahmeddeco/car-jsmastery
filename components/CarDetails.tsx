@@ -4,7 +4,6 @@ import { CarDetailsProps } from '@/types'
 import { generateCarImageUrl } from '@/utils'
 import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
-import { relative } from 'path'
 import { Fragment } from 'react'
 
 const CarDetails = ({ car, closeModal, isOpen }: CarDetailsProps) => {
