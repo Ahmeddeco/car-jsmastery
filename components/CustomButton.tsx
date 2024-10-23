@@ -3,7 +3,7 @@
 import { CustomButtonProps } from '@/types'
 import Image from 'next/image'
 
-const Button = ({
+const CustomButton = ({
 	isDisabled,
 	btnType,
 	containerStyles,
@@ -32,4 +32,4 @@ const Button = ({
 	</button>
 )
 
-export default Button
+export default CustomButton
